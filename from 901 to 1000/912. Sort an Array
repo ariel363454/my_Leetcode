@@ -1,0 +1,45 @@
+class minheap {
+public:
+    vector<int> heap;
+    void push(int x){
+        heap.push_back(x);
+        int i = heap.size()-1;
+        int p = (i-1)/2;
+        while(heap[i] < heap[p] && i > 0){
+            swap(heap[i], heap[p]);
+            i = p;
+            p = (i-1)/2;
+        }
+    }
+    int pop(){
+        int x = heap[0];
+        int i = 0;
+        heap[0] = heap.back();
+        heap.pop_back();
+        while(true){
+            int min = i;
+            int left = i*2+1;
+            int right = i*2+2;
+            if(right < heap.size() && heap[min] > heap[right])
+                min = right;
+            if(left < heap.size() && heap[min] > heap[left])
+                min = left;
+            if(min == i)
+                break;
+            swap(heap[i], heap[min]);
+            i = min;
+        }
+        return x;
+    }
+};
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        minheap heap;
+        for(int i = 0;i < nums.size();i++)
+            heap.push(nums[i]);
+        for(int i = 0;i < nums.size();i++)
+            nums[i] = heap.pop();
+        return nums;
+    }
+};
