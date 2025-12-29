@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        if(x < 0)
+            return false;
+        long rvs = 0;
+        for(int n = x;n > 0;n /= 10){
+            rvs = (rvs * 10) + (n % 10);
+        }
+        if(rvs == x)
+            return true;
+        else
+            return false;
+    }
+};
