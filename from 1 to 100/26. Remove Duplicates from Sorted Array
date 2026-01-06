@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        set<int> onlyNums;
+        int i = 0;
+        while(i < nums.size()){
+            if(onlyNums.count(nums[i]))
+                nums.erase(nums.begin() + i);
+            else{
+                onlyNums.insert(nums[i]);
+                i++;
+            }
+        }
+        return nums.size();
+    }
+};
