@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        if(s.size() < 1)
+            return s;
+        int start = 0, end = 0;
+        int maxlen = 1;
+        for(int i = 0;i < s.length();i++){
+            int ismax = max(PalStr(s, i, i), PalStr(s, i, i+1));
+            if(ismax > maxlen){
+                maxlen = ismax;
+                start = i - (maxlen - 1) / 2;
+            }
+        }
+        return s.substr(start, maxlen);
+    }
+private:
+    int PalStr(string s, int left, int right){
+        while(left >= 0 && right < s.length() && s[left] == s[right]){
+            left--;
+            right++;
+        }
+        return right - left -1;
+    }
+};
