@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        auto index = max_element(nums.begin(), nums.end());
+        int ans = 0;
+        if(target >= nums[0])
+            auto i = lower_bound(nums.begin(), index, target);
+            if(i != index && *i == target)
+                ans = distance(nums.begin(), i);
+        else
+             auto i = lower_bound(index + 1, nums.end(), target);
+            if(i != nums.end() && *i == target)
+                ans = distance(nums.begin(), i);
+        return ans;
+    }
+};
