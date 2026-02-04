@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        if(nums.size() < 2)
+            return 0;
+        int ans = 1;
+        int i = 0;
+        while (i + nums[i] < nums.size() - 1) {
+            int max_reach = 0;
+            int next_i = i;
+            
+            for(int j = 1; j <= nums[i]; j++) {
+                if (i + j >= nums.size()) break; 
+                
+                if(i + j + nums[i + j] > max_reach) {
+                    max_reach = i + j + nums[i + j];
+                    next_i = i + j;
+                }
+            }
+            i = next_i;
+            ans++;
+        }
+        
+        return ans;
+    }
+};
