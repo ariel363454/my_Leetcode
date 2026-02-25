@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int lengthOfLastWord(string s) {
+        int pos = -1;
+        int len = 0;
+        for(int i = 0;i < s.length();i++){
+            if(s[i] == ' '){
+                if(i - pos != 1)
+                    len = i - pos - 1;
+                pos = i;
+                cout << len << " " << pos << endl;
+            }
+        }
+        if(s.back() != ' ' && s.back() - pos != 1)
+            len = s.length() - pos - 1;
+        cout << len << endl;
+        return len;
+    }
+};
