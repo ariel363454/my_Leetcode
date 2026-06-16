@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        int Max = max(m-1, n-1);
+        int Min = min(m-1,n-1);
+        double Multi = 1;
+        int i = m + n - 2;
+        int j = Min;
+        while(j > 0){
+            Multi *= i;
+            cout << Multi << " ";
+            Multi /= j;
+            i--;
+            j--;
+            cout << Multi << " ";
+        }
+        return round(Multi);
+    }
+};
