@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int climbStairs(int n) {
+        vector<int> allans;
+        allans.push_back(0);
+        allans.push_back(1);
+        allans.push_back(2);
+        for(int i = 3;i <= n;i++){
+            allans.push_back(allans[i - 1] + allans[i - 2]);
+        }
+        return allans[n];
+    }
+};
