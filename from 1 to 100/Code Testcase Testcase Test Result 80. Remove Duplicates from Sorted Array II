@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        map<int, int> times;
+        int ans = 0;
+        for(int i = 0;i < nums.size();i++){
+            if(times.count(nums[i]) == 0){
+                times[nums[i]] = 1;
+                ans++;
+                cout << "0";
+            }else if(times[nums[i]] == 1){
+                times[nums[i]]++;
+                ans++;
+                cout << "1";
+            }else{
+                nums.erase(nums.begin() + i);
+                i--;
+                cout << "e";
+            }
+        }
+        return ans;
+    }
+};
